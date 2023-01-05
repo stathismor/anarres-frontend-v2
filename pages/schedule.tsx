@@ -1,9 +1,3 @@
-import Layout from "../components/Layout";
-
 export default function Schedule() {
-  return (
-    <>
-      <Layout>Schedule here</Layout>
-    </>
-  );
+  return <p>Schedule goes here</p>;
 }

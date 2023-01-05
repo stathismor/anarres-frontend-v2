@@ -58,10 +58,10 @@ export default function Navbar() {
               Home
             </Link>
             <Link
-              href="/"
+              href="/schedule"
               className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-100 font-bold items-center justify-center hover:bg-gray-900 hover:text-gray-100"
             >
-              Services
+              Schedule
             </Link>
             <Link
               href="/about"

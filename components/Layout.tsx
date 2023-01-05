@@ -1,5 +1,3 @@
-// import Navbar from "./navbar";
-// import Footer from "./footer";
 import Player from "./Player";
 import Navbar from "./Navbar";
 
