@@ -39,7 +39,7 @@ const PostPage: NextPage<PostData> = (postData) => {
             {format(new Date(postData.date), "MMMM do, yyyy")}
           </time>
 
-          <hr className="border-cyan-600 mt-4 mb-10" />
+          <hr className="text-red-500 mt-4 mb-10" />
         </motion.div>
       </section>
 

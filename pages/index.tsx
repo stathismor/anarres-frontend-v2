@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "react-feather";
@@ -17,14 +18,7 @@ export async function getStaticProps() {
 export default function Home({ posts }: { posts: Array<PostData> }) {
   return (
     <EnterTransition>
-      <section className="flex flex-col items-center max-w-screen-md m-auto">
-        <motion.h1
-          variants={childVariants}
-          className="text-5xl mb-12 font-extrabold"
-        >
-          Blog Posts
-        </motion.h1>
-
+      <section className="flex flex-col items-center max-w-screen-md mx-auto mt-10 mb-40">
         <ul className="list-none p-0">
           {posts.map((post) => (
             <motion.li
@@ -37,8 +31,8 @@ export default function Home({ posts }: { posts: Array<PostData> }) {
                   className="m-auto"
                   src={post.thumbnail ?? ""}
                   alt="ALT IMAGE"
-                  width={768}
-                  height={432}
+                  width={800}
+                  height={600}
                 />
               </Link>
               <h3>
@@ -49,14 +43,16 @@ export default function Home({ posts }: { posts: Array<PostData> }) {
                   {post.title}
                 </Link>
               </h3>
-              <time className="italic text-base">{post.date}</time>
+              <time className="italic text-base">
+                {format(new Date(post.date), "MMMM do, yyyy")}
+              </time>
               <p className="mt-8 mb-4 text-lg">{post.description}</p>
               <div>
                 <Link
                   href={`/blog/${post.slug}`}
                   className="underline inline-flex items-center"
                 >
-                  <span className="mr-1 hover:text-cyan-600">Read</span>{" "}
+                  <span className="mr-1 hover:text-red-500">Read</span>{" "}
                   <ArrowRight size={20} />
                 </Link>
               </div>
