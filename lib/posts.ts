@@ -2,35 +2,39 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const postsDirectory = path.join(process.cwd(), "posts");
+const postsPath = path.join(process.cwd(), "posts");
 
-export interface PostData {
-  id: string;
-  date: string;
+interface MatterData {
+  slug: string;
+  date: Date;
   title: string;
+  description: string;
+  thumbnail: string;
 }
 
-export function getSortedPostsData(): Array<PostData> {
-  // Get file names under /posts
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
-    // Remove ".md" from file name to get id
-    const id = fileName.replace(/\.md$/, "");
+export interface Post extends Omit<MatterData, "date"> {
+  date: string;
+  content: string;
+}
 
+export function getPosts(): Array<Post> {
+  // Get file names under /posts
+  const fileNames = fs.readdirSync(postsPath);
+  const allPostsData = fileNames.map((fileName) => {
     // Read markdown file as string
-    const fullPath = path.join(postsDirectory, fileName);
+    const fullPath = path.join(postsPath, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
-    // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
+    const data = matterResult.data as MatterData;
+    const content = matterResult.content;
 
-    // console.log("matterResult", matterResult);
-    // Combine the data with the id
     return {
-      id,
-      ...(matterResult.data as { date: Date; title: string }), // TODO: Is this the best way?
+      ...data,
+      content,
     };
   });
+
   // Sort posts by date
   const sortedData = allPostsData.sort((a, b) => {
     if (a.date < b.date) {

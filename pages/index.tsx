@@ -1,35 +1,69 @@
-import styles from "../styles/Home.module.css";
-
-import { getSortedPostsData, PostData } from "../lib/posts";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "react-feather";
+import { childVariants, EnterTransition } from "../components/EnterTransition";
+import { getPosts, Post } from "../lib/posts";
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  const posts = getPosts();
   return {
     props: {
-      allPostsData,
+      posts,
     },
   };
 }
 
-export default function Home({
-  allPostsData,
-}: {
-  allPostsData: Array<PostData>;
-}) {
+export default function Home({ posts }: { posts: Array<Post> }) {
   return (
-    <section className={`${styles.headingMd} ${styles.padding1px}`}>
-      <h2 className={styles.headingLg}>Blog</h2>
-      <ul className={styles.list}>
-        {allPostsData.map(({ id, date, title }) => (
-          <li className={styles.listItem} key={id}>
-            {title}
-            <br />
-            {id}
-            <br />
-            {date}
-          </li>
-        ))}
-      </ul>
-    </section>
+    <EnterTransition>
+      <section className="flex flex-col items-center max-w-screen-md m-auto">
+        <motion.h1
+          variants={childVariants}
+          className="text-5xl mb-12 font-extrabold"
+        >
+          Blog Posts
+        </motion.h1>
+
+        <ul className="list-none p-0">
+          {posts.map((post) => (
+            <motion.li
+              variants={childVariants}
+              key={post.slug}
+              className="mb-24 last:mb-0"
+            >
+              <Link href={`/blog/${post.slug}`} className="no-underline">
+                <Image
+                  className="m-auto"
+                  src={post.thumbnail ?? ""}
+                  alt="ALT IMAGE"
+                  width={768}
+                  height={432}
+                />
+              </Link>
+              <h3>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="no-underline text-2xl font-bold"
+                >
+                  {post.title}
+                </Link>
+              </h3>
+              <time className="italic text-base">{post.date}</time>
+              <p className="mt-8 mb-4 text-lg">{post.description}</p>
+              <div>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="underline inline-flex items-center"
+                >
+                  <span className="mr-1 hover:text-cyan-600">Read</span>{" "}
+                  <ArrowRight size={20} />
+                </Link>
+              </div>
+            </motion.li>
+          ))}
+        </ul>
+      </section>
+    </EnterTransition>
   );
 }

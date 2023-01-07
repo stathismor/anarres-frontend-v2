@@ -7,9 +7,9 @@ interface PayoutProps {
 
 export default function Layout({ children }: PayoutProps) {
   return (
-    <div className="flex flex-col h-screen justify-between text-center">
+    <div className="text-center">
       <Navbar />
-      <main className="mb-auto flex-grow bg-black">{children}</main>
+      <main className="bg-black">{children}</main>
       <Player />
     </div>
   );

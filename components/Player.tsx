@@ -46,39 +46,37 @@ function Player() {
   }
 
   return (
-    <div className="w-full bg-gray-700 shadow-md overflow-hidden mx-auto p-2">
+    <div className="flex fixed bottom-0 overflow-hidden w-full p-2 bg-gray-700">
       <div className="flex">
-        <div className="flex">
-          <button type="button" onClick={() => togglePlay()} className="">
-            {isPlaying ? (
-              <PauseIcon className="h-20 w-20 text-red-500" />
-            ) : (
-              <PlayIcon className="h-20 w-20 text-red-500" />
-            )}
+        <button type="button" onClick={() => togglePlay()} className="">
+          {isPlaying ? (
+            <PauseIcon className="h-20 w-20 text-red-500" />
+          ) : (
+            <PlayIcon className="h-20 w-20 text-red-500" />
+          )}
 
-            <span className="sr-only">{isPlaying ? "Pause" : "Play"}</span>
-          </button>
-          <div className="h-20 w-20 relative">
-            <Image src={nowPlaying.song.art} alt="Album cover" fill />
-          </div>
+          <span className="sr-only">{isPlaying ? "Pause" : "Play"}</span>
+        </button>
+        <div className="h-20 w-20 relative">
+          <Image src={nowPlaying.song.art} alt="Album cover" fill />
         </div>
-        <div className="flex flex-1 flex-col">
-          <div className="flex flex-col grow h-10">
-            <span className="text-sm text-red-500 capitalize font-semibold pt-1">
-              I think I need a sunrise, I am tired of the sunset
-            </span>
-            <span className="text-xs text-gray-100 uppercase font-medium ">
-              - Boston Augustana
-            </span>
-          </div>
-          <div className="flex justify-end mx-2">
-            <span className="text-xs text-gray-100 uppercase font-medium pl-2">
-              02:00/04:00
-            </span>
-          </div>
-          <div className="flex bg-gray-100 rounded-full h-2.5 m-2">
-            <div className="bg-red-500 rounded-full" style={{ width: "25%" }} />
-          </div>
+      </div>
+      <div className="flex flex-1 flex-col">
+        <div className="flex flex-col grow h-10">
+          <span className="text-sm text-red-500 capitalize font-semibold pt-1">
+            I think I need a sunrise, I am tired of the sunset
+          </span>
+          <span className="text-xs text-gray-100 uppercase font-medium ">
+            - Boston Augustana
+          </span>
+        </div>
+        <div className="flex justify-end mx-2">
+          <span className="text-xs text-gray-100 uppercase font-medium pl-2">
+            02:00/04:00
+          </span>
+        </div>
+        <div className="flex bg-gray-100 rounded-full h-2.5 m-2">
+          <div className="bg-red-500 rounded-full" style={{ width: "25%" }} />
         </div>
       </div>
     </div>
