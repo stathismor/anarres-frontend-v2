@@ -35,7 +35,7 @@ export const EnterTransition: React.FunctionComponent<{
   children: React.ReactNode;
 }> = ({ children }) => {
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence mode="wait">
       <motion.div
         variants={variants}
         initial="hidden"

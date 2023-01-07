@@ -3,7 +3,7 @@ import { compareDesc } from "date-fns";
 import path from "path";
 import matter from "gray-matter";
 
-const POSTS_PATH = "posts";
+const POSTS_PATH = "blog/posts";
 
 interface MatterData {
   date: Date;
