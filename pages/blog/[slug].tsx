@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import { motion } from "framer-motion";
 import { NextPage } from "next";
 import Image from "next/image";
+import ReactMarkdown from "react-markdown";
 import { getPostData, PostData, getPostSlugs } from "../../lib/posts";
 
 import {
@@ -44,7 +45,7 @@ const PostPage: NextPage<PostData> = (postData) => {
 
       <motion.div variants={childVariants}>
         <article className="prose prose-lg dark:prose-invert max-w-screen-lg m-auto">
-          {postData.content}
+          <ReactMarkdown>{postData.content}</ReactMarkdown>
         </article>
       </motion.div>
     </EnterTransition>
