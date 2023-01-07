@@ -64,10 +64,10 @@ function Player() {
       <div className="flex flex-1 flex-col">
         <div className="flex flex-col grow h-10">
           <span className="text-sm text-red-500 capitalize font-semibold pt-1">
-            I think I need a sunrise, I am tired of the sunset
+            {nowPlaying.song.title}
           </span>
           <span className="text-xs text-gray-100 uppercase font-medium ">
-            - Boston Augustana
+            {nowPlaying.song.artist}
           </span>
         </div>
         <div className="flex justify-end mx-2">
