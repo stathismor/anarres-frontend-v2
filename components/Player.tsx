@@ -46,7 +46,7 @@ function Player() {
   }
 
   return (
-    <div className="flex fixed bottom-0 overflow-hidden w-full p-2 bg-gray-700">
+    <div className="flex fixed bottom-0 overflow-hidden w-full p-2 text-center bg-gray-700">
       <div className="flex">
         <button type="button" onClick={() => togglePlay()} className="">
           {isPlaying ? (

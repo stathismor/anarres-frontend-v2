@@ -3,10 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "react-feather";
 import { childVariants, EnterTransition } from "../components/EnterTransition";
-import { getPosts, Post } from "../lib/posts";
+import { getPostsData, PostData } from "../lib/posts";
 
 export async function getStaticProps() {
-  const posts = getPosts();
+  const posts = getPostsData();
   return {
     props: {
       posts,
@@ -14,7 +14,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({ posts }: { posts: Array<Post> }) {
+export default function Home({ posts }: { posts: Array<PostData> }) {
   return (
     <EnterTransition>
       <section className="flex flex-col items-center max-w-screen-md m-auto">

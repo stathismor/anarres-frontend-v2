@@ -1,53 +1,65 @@
 import fs from "fs";
+import { compareDesc } from "date-fns";
 import path from "path";
 import matter from "gray-matter";
 
-const postsPath = path.join(process.cwd(), "posts");
+const POSTS_PATH = "posts";
 
 interface MatterData {
-  slug: string;
   date: Date;
   title: string;
   description: string;
   thumbnail: string;
+  subtitle: string;
 }
 
-export interface Post extends Omit<MatterData, "date"> {
+export interface PostData extends Omit<MatterData, "date"> {
+  slug: string;
   date: string;
   content: string;
 }
 
-export function getPosts(): Array<Post> {
-  // Get file names under /posts
-  const fileNames = fs.readdirSync(postsPath);
-  const allPostsData = fileNames.map((fileName) => {
-    // Read markdown file as string
-    const fullPath = path.join(postsPath, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+export function getPostsData(): Array<PostData> {
+  const postPaths = fs.readdirSync(path.resolve(POSTS_PATH));
 
-    const matterResult = matter(fileContents);
-    const data = matterResult.data as MatterData;
-    const content = matterResult.content;
-
-    return {
-      ...data,
-      content,
-    };
+  const postsData = postPaths.map((postPath) => {
+    return getMatterData(postPath);
   });
 
   // Sort posts by date
-  const sortedData = allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+  const sortedData = postsData.sort((a, b) =>
+    compareDesc(new Date(a.date), new Date(b.date))
+  );
+  return sortedData;
+}
 
-  const formattedData = sortedData.map((datum) => ({
-    ...datum,
-    date: datum.date.toISOString(),
-  }));
+export function getPostData(slug: string) {
+  const postPath = path.resolve(POSTS_PATH, `${slug}.md`);
 
-  return formattedData;
+  return getMatterData(postPath);
+}
+
+export function getPostSlugs() {
+  const postPaths = fs.readdirSync(path.resolve(POSTS_PATH));
+
+  return postPaths.map((postPath) => postPath.replace(".md", ""));
+}
+
+function getMatterData(postPath: string) {
+  const fileContents = fs
+    .readFileSync(path.resolve(POSTS_PATH, postPath))
+    .toString();
+
+  const slug = postPath.replace(".md", "");
+
+  const matterResult = matter(fileContents);
+  const data = matterResult.data as MatterData;
+  const content = matterResult.content;
+
+  return {
+    slug,
+    ...data,
+    date: data.date.toISOString(),
+    content,
+  };
 }

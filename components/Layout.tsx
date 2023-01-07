@@ -7,7 +7,7 @@ interface PayoutProps {
 
 export default function Layout({ children }: PayoutProps) {
   return (
-    <div className="text-center">
+    <div>
       <Navbar />
       <main className="bg-black">{children}</main>
       <Player />
