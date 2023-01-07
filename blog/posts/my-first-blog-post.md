@@ -6,6 +6,7 @@ description: Lorem Ipsum is simply dummy text of the printing and typesetting
   industry. Lorem Ipsum has been the industry's standard dummy text ever since
   the 1500s.
 ---
+
 This is my first blog post. And this is an image. Cool isn't it.
 
 ![](/images/council_of_elrond_-_fotr.png)

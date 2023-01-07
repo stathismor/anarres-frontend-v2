@@ -8,7 +8,7 @@ function Player() {
   const [nowPlaying, setNowPlaying] = useState({
     duration: 0,
     elapsed: 0,
-    song: { artist: "", title: "", art: "" },
+    song: { artist: "", title: "", art: "/images/generic_album_art.jpg" },
   });
 
   const fetchData = async () => {

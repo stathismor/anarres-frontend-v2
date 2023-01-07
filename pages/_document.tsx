@@ -8,6 +8,7 @@ export default function Document() {
           async
           src="https://identity.netlify.com/v1/netlify-identity-widget.js"
         />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <body>
         <Main />
