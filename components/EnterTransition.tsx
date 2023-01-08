@@ -1,5 +1,4 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ReactNode } from "react";
 
 const variants = {
   hidden: {
