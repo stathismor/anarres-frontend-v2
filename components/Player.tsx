@@ -1,7 +1,11 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { PauseIcon, PlayIcon } from "@heroicons/react/20/solid";
-import { intervalToDuration } from "date-fns";
+import { Progress } from "./Progress";
+import { SongInfo } from "./SongInfo";
+
+// Feel free to use "https://demo.azuracast.com/api/nowplaying/1" for testing
+const AZURACAST_URL = "https://admin.anarres.fm/api/nowplaying/1";
 
 export default function Player() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -14,25 +18,8 @@ export default function Player() {
     song: { artist: "", title: "", art: "/images/generic_album_art.jpg" },
   });
 
-  const getProgressText = useCallback(() => {
-    const elapsed = intervalToDuration({
-      start: 0,
-      end: nowPlaying.elapsed * 1000,
-    });
-    const duration = intervalToDuration({
-      start: 0,
-      end: nowPlaying.duration * 1000,
-    });
-
-    return `${elapsed.minutes}:${elapsed.seconds}/${duration.minutes}:${duration.seconds}`;
-  }, [nowPlaying]);
-
-  const getProgressPercentage = useCallback(() => {
-    return (nowPlaying.elapsed / nowPlaying.duration) * 100;
-  }, [nowPlaying]);
-
   const fetchData = async () => {
-    const data = await fetch("https://admin.anarres.fm/api/nowplaying/1");
+    const data = await fetch(AZURACAST_URL);
     const json = await data.json();
     return json;
   };
@@ -86,30 +73,15 @@ export default function Player() {
         </div>
       </div>
       <div className="flex flex-1 flex-col">
-        <div className="flex flex-col grow h-10">
-          <span className="text-sm text-red-500 font-semibold pt-1">
-            {nowPlaying.song.title}
-          </span>
-          <span className="text-xs text-gray-100 font-medium ">
-            {nowPlaying.song.artist}
-          </span>
-          {live.isLive && (
-            <span className="text-xs text-red-500 font-medium ">
-              LIVE: {live.streamerName}
-            </span>
-          )}
-        </div>
-        <div className="flex justify-end mx-2">
-          <span className="text-xs text-gray-100 font-medium pl-2">
-            {getProgressText()}
-          </span>
-        </div>
-        <div className="flex bg-gray-100 rounded-full h-2.5 m-2">
-          <div
-            className="bg-red-500 rounded-full"
-            style={{ width: `${getProgressPercentage()}%` }}
+        <div className="flex flex-col grow h-10 text-left">
+          <SongInfo
+            title={nowPlaying.song.title}
+            artist={nowPlaying.song.artist}
+            isLive={live.isLive}
+            streamerName={live.streamerName}
           />
         </div>
+        <Progress elapsed={nowPlaying.elapsed} duration={nowPlaying.duration} />
       </div>
     </div>
   );
