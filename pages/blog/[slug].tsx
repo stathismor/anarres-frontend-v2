@@ -24,8 +24,8 @@ const PostPage: NextPage<PostData> = (postData) => {
               className="rounded"
               src={postData.thumbnail}
               alt="ALT IMAGE HERE"
-              height={576}
-              width={1024}
+              height={800}
+              width={600}
             />
           </motion.div>
         )}

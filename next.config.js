@@ -7,6 +7,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'admin.anarres.fm',
       },
+      {
+        protocol: 'https',
+        hostname: 'coverartarchive.org',
+      },
     ],
   },
 }

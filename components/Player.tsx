@@ -5,6 +5,7 @@ import { intervalToDuration } from "date-fns";
 
 export default function Player() {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [live, setLive] = useState({ isLive: false, streamerName: "" });
   const [audioElement, setAudioElement] = useState<HTMLAudioElement>();
   const [nowPlaying, setNowPlaying] = useState({
     duration: 0,
@@ -46,6 +47,10 @@ export default function Player() {
     const timer = setInterval(() => {
       fetchData().then((res) => {
         setNowPlaying(res.now_playing);
+        setLive({
+          isLive: res.live.is_live,
+          streamerName: res.live.streamer_name,
+        });
       });
     }, 1500);
     return () => clearInterval(timer);
@@ -88,6 +93,11 @@ export default function Player() {
           <span className="text-xs text-gray-100 font-medium ">
             {nowPlaying.song.artist}
           </span>
+          {live.isLive && (
+            <span className="text-xs text-red-500 font-medium ">
+              LIVE: {live.streamerName}
+            </span>
+          )}
         </div>
         <div className="flex justify-end mx-2">
           <span className="text-xs text-gray-100 font-medium pl-2">
