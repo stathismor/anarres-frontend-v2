@@ -11,6 +11,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'coverartarchive.org',
       },
+      {
+        protocol: 'https',
+        hostname: 'demo.azuracast.com',
+      },
     ],
   },
 }
