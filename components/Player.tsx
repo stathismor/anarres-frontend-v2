@@ -72,6 +72,7 @@ export default function Player() {
       <ProgressBar
         elapsed={nowPlaying.elapsed}
         duration={nowPlaying.duration}
+        isPlaying={isPlaying}
       />
       <div className="flex w-full justify-between py-0.5">
         <div className="flex min-w-[0] whitespace-nowrap">

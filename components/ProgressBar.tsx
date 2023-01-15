@@ -5,15 +5,16 @@ const getProgressPercentage = (elapsed: number, duration: number) => {
 interface Props {
   elapsed: number;
   duration: number;
+  isPlaying: boolean;
 }
 
-export function ProgressBar({ elapsed, duration }: Props) {
+export function ProgressBar({ elapsed, duration, isPlaying }: Props) {
   return (
     <>
       <div className="">
         <div className="flex bg-gray-100 h-0.5 sm:h-1">
           <div
-            className="bg-red-500"
+            className={isPlaying ? "bg-red-500" : "bg-gray-400"}
             style={{ width: `${getProgressPercentage(elapsed, duration)}%` }}
           />
         </div>
