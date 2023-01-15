@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { PauseIcon, PlayIcon } from "@heroicons/react/20/solid";
-import { Progress } from "./Progress";
+import { PauseCircleIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
+import { ProgressBar } from "./ProgressBar";
+import { ProgressTime } from "./ProgressTime";
+import { PlayButton } from "./PlayButton";
+import { AlbumCover } from "./AlbumCover";
 import { SongInfo } from "./SongInfo";
 
 // Feel free to use "https://demo.azuracast.com/api/nowplaying/1" for testing
@@ -9,13 +12,21 @@ const AZURACAST_URL = "https://admin.anarres.fm/api/nowplaying/1";
 
 export default function Player() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [live, setLive] = useState({ isLive: false, streamerName: "" });
+  const [live, setLive] = useState({
+    isLive: false,
+    streamerName: "akjshkd",
+  });
   const [audioElement, setAudioElement] = useState<HTMLAudioElement>();
   const [nowPlaying, setNowPlaying] = useState({
-    duration: 0,
+    duration: 10,
     elapsed: 0,
     remaining: 0,
-    song: { artist: "", title: "", art: "/images/generic_album_art.jpg" },
+    song: {
+      artist: "ajsdhasjhd",
+      album: "",
+      title: "aksjhjd",
+      art: "/images/generic_album_art.jpg",
+    },
   });
 
   const fetchData = async () => {
@@ -57,23 +68,15 @@ export default function Player() {
   }
 
   return (
-    <div className="flex fixed bottom-0 overflow-hidden w-full p-2 text-center bg-gray-700">
-      <div className="flex">
-        <button type="button" onClick={() => togglePlay()} className="">
-          {isPlaying ? (
-            <PauseIcon className="h-20 w-20 text-red-500" />
-          ) : (
-            <PlayIcon className="h-20 w-20 text-red-500" />
-          )}
-
-          <span className="sr-only">{isPlaying ? "Pause" : "Play"}</span>
-        </button>
-        <div className="h-20 w-20 relative">
-          <Image src={nowPlaying.song.art} alt="Album cover" fill />
-        </div>
-      </div>
-      <div className="flex flex-1 flex-col">
-        <div className="flex flex-col grow h-10 text-left">
+    <div className="flex flex-col fixed bottom-0 overflow-hidden w-full text-center bg-gray-800">
+      <ProgressBar
+        elapsed={nowPlaying.elapsed}
+        duration={nowPlaying.duration}
+      />
+      <div className="flex w-full justify-between py-1">
+        <div className="flex min-w-[0] whitespace-nowrap">
+          <PlayButton isPlaying={isPlaying} onClick={togglePlay} />
+          <AlbumCover art={nowPlaying.song.art} album={nowPlaying.song.album} />
           <SongInfo
             title={nowPlaying.song.title}
             artist={nowPlaying.song.artist}
@@ -81,7 +84,12 @@ export default function Player() {
             streamerName={live.streamerName}
           />
         </div>
-        <Progress elapsed={nowPlaying.elapsed} duration={nowPlaying.duration} />
+        <div className="pt-0.5">
+          <ProgressTime
+            elapsed={nowPlaying.elapsed}
+            duration={nowPlaying.duration}
+          />
+        </div>
       </div>
     </div>
   );
