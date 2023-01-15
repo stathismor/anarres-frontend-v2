@@ -14,7 +14,7 @@ export default function Player() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [live, setLive] = useState({
     isLive: false,
-    streamerName: "akjshkd",
+    streamerName: "",
   });
   const [audioElement, setAudioElement] = useState<HTMLAudioElement>();
   const [nowPlaying, setNowPlaying] = useState({
@@ -22,9 +22,9 @@ export default function Player() {
     elapsed: 0,
     remaining: 0,
     song: {
-      artist: "ajsdhasjhd",
+      artist: "",
       album: "",
-      title: "aksjhjd",
+      title: "",
       art: "/images/generic_album_art.jpg",
     },
   });
@@ -73,7 +73,7 @@ export default function Player() {
         elapsed={nowPlaying.elapsed}
         duration={nowPlaying.duration}
       />
-      <div className="flex w-full justify-between py-1">
+      <div className="flex w-full justify-between py-0.5">
         <div className="flex min-w-[0] whitespace-nowrap">
           <PlayButton isPlaying={isPlaying} onClick={togglePlay} />
           <AlbumCover art={nowPlaying.song.art} album={nowPlaying.song.album} />
@@ -82,6 +82,7 @@ export default function Player() {
             artist={nowPlaying.song.artist}
             isLive={live.isLive}
             streamerName={live.streamerName}
+            isPlaying={isPlaying}
           />
         </div>
         <div className="pt-0.5">

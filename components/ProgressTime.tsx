@@ -23,11 +23,8 @@ export function ProgressTime({ elapsed, duration }: Props) {
       {duration !== 0 && (
         <div className="flex justify-center whitespace-nowrap px-1">
           <div className="flex justify-between">
-            <span className="text-xs whitespace-nowrap text-gray-100 invisible sm:visible">
+            <span className="text-xs whitespace-nowrap text-gray-100 tracking-tighter">
               {`${formatTime(elapsed)} / ${formatTime(duration)}`}
-            </span>
-            <span className="text-xs whitespace-nowrap text-gray-100 visible sm:hidden">
-              {`${formatTime(elapsed)}/${formatTime(duration)}`}
             </span>
           </div>
         </div>

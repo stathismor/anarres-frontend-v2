@@ -1,11 +1,20 @@
+import { SoundBar } from "./SoundBar";
+
 interface Props {
   title: string;
   artist: string;
   isLive: boolean;
   streamerName: string;
+  isPlaying: boolean;
 }
 
-export function SongInfo({ title, artist, isLive, streamerName }: Props) {
+export function SongInfo({
+  title,
+  artist,
+  isLive,
+  streamerName,
+  isPlaying,
+}: Props) {
   return (
     <span
       className={`flex flex-col ${
@@ -18,11 +27,15 @@ export function SongInfo({ title, artist, isLive, streamerName }: Props) {
             Live
           </span>
           <span className="">{streamerName}</span>
+          <SoundBar isPlaying={isPlaying} />
         </span>
       )}
       {title && (
-        <span className="text-gray-100 overflow-hidden overflow-ellipsis">
-          {title}
+        <span className="flex">
+          <span className="text-gray-100 overflow-hidden overflow-ellipsis">
+            {title}
+          </span>
+          <SoundBar isPlaying={isPlaying} />
         </span>
       )}
       {artist && (
