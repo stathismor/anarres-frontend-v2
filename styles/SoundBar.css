@@ -2,40 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes bounce {
-  10% {
-    transform: scaleY(0.3); /* start by scaling to 30% */
-  }
-
-  30% {
-    transform: scaleY(1); /* scale up to 100% */
-  }
-
-  60% {
-    transform: scaleY(0.5); /* scale down to 50% */
-  }
-
-  80% {
-    transform: scaleY(0.75); /* scale up to 75% */
-  }
-
-  100% {
-    transform: scaleY(0.6); /* scale down to 60% */
-  }
-}
-
 @layer components {
-  .sound-bar {
-    background-color: #9ca38f;
-    height: 12px;
-    width: 2px;
-    border-radius: 3px;
-    transform-origin: bottom;
-    animation: sound 3s ease infinite alternate;
-    margin-right: 1px;
-    content: "";
-  }
-
   @keyframes sound {
     10% {
       transform: scaleY(0.3); /* start by scaling to 30% */
@@ -58,13 +25,32 @@
     }
   }
 
-  .sound-bar:nth-child(2) {
+  .sound-bar-static {
+    width: 2px;
+    border-radius: 4px;
+    transform-origin: bottom;
+    margin-right: 1px;
+    content: "";
+  }
+
+  .sound-bar-animated {
+    animation: sound 3s ease infinite alternate;
+  }
+
+  .sound-bar-static:nth-child(1) {
+    transform: scaleY(0.5);
+  }
+
+  .sound-bar-static:nth-child(2) {
     animation-delay: -2.2s;
+    transform: scaleY(0.4);
   }
-  .sound-bar:nth-child(3) {
+  .sound-bar-static:nth-child(3) {
     animation-delay: -3.7s;
+    transform: scaleY(0.8);
   }
-  .sound-bar:nth-child(4) {
+  .sound-bar-static:nth-child(4) {
     animation-delay: -1.4s;
+    transform: scaleY(0.3);
   }
 }

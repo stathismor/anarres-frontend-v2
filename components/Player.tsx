@@ -22,9 +22,9 @@ export default function Player() {
     elapsed: 0,
     remaining: 0,
     song: {
-      artist: "asdasdsa",
-      album: "akjsdhjkasdh",
-      title: "ajshdjkash",
+      artist: "",
+      album: "",
+      title: "",
       art: "/images/generic_album_art.jpg",
     },
   });

@@ -30,10 +30,10 @@ export function SongInfo({
       )}
       {title && (
         <span className="flex">
-          <span className="text-gray-100 overflow-hidden overflow-ellipsis">
+          <span className="pr-1 text-gray-100 overflow-hidden overflow-ellipsis">
             {title}
           </span>
-          <SoundBar isPlaying={isPlaying} />
+          {!isLive && <SoundBar isPlaying={isPlaying} />}
         </span>
       )}
       {artist && (
