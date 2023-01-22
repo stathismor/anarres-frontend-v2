@@ -5,7 +5,7 @@ interface Props {
 
 export function SoundBar({ isPlaying }: Props) {
   return (
-    <span className="flex pl-0.5 h-4 sm:h-5 pb-0.5 sm:pb-1">
+    <span className="flex pl-0.5 h-3 sm:mt-1">
       <span
         className={classNames("sound-bar-static", {
           "sound-bar-animated": isPlaying,

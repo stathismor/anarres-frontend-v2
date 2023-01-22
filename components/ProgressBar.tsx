@@ -11,7 +11,7 @@ interface Props {
 export function ProgressBar({ elapsed, duration, isPlaying }: Props) {
   return (
     <>
-      <div className="flex bg-gray-100 h-0.5 sm:h-1">
+      <div className="flex bg-gray-100 h-0.5 sm:h-1 mb-0.5">
         <div
           className={
             isPlaying
