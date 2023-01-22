@@ -16,11 +16,9 @@ export function SongInfo({
   isPlaying,
 }: Props) {
   return (
-    <span
-      className={`flex flex-col ${"justify-start"}  min-w-[0] text-left px-1 sm:px-3 text-xs sm:text-sm h-full`}
-    >
+    <span className="flex justify-start flex-col min-w-[0] text-left px-1 sm:px-3 text-xs sm:text-sm h-full">
       {isLive && (
-        <span className="flex space-x-1 pt-0.5 sm:pt-1">
+        <span className="flex space-x-1 sm:pt-1">
           <span className="text-xs inline-block px-1 py-0 sm:py-1 leading-none text-center whitespace-nowrap font-bold bg-red-500 text-gray-100 rounded">
             Live
           </span>

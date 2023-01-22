@@ -15,8 +15,8 @@ export function ProgressBar({ elapsed, duration, isPlaying }: Props) {
         <div
           className={
             isPlaying
-              ? "transition-property: background-color; bg-red-500 duration-300 ..."
-              : "transition-property: background-color; bg-gray-400 duration-300 ..."
+              ? "transition-property: background-color; bg-red-500 duration-500 ..."
+              : "transition-property: background-color; bg-gray-400 duration-500 ..."
           }
           style={{ width: `${getProgressPercentage(elapsed, duration)}%` }}
         />
