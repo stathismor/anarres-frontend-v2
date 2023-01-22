@@ -26,10 +26,10 @@
   }
 
   .sound-bar-static {
-    width: 2px;
+    width: 0.1rem;
     border-radius: 4px;
     transform-origin: bottom;
-    margin-right: 1px;
+    margin-right: 0.1rem;
     content: "";
   }
 
