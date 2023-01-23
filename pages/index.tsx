@@ -18,7 +18,7 @@ export async function getStaticProps() {
 export default function Home({ posts }: { posts: Array<PostData> }) {
   return (
     <EnterTransition>
-      <section className="flex flex-col items-center max-w-screen-md mx-auto mt-10 mb-40">
+      <section className="flex flex-col items-center max-w-screen-md mx-auto">
         <ul className="list-none p-0">
           {posts.map((post) => (
             <motion.li

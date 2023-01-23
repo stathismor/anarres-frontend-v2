@@ -4,6 +4,7 @@ date: 2023-01-07T19:04:01.410Z
 thumbnail: /images/council_of_elrond_-_fotr.png
 description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
 ---
+
 This is my first blog post. And this is an image. Cool isn't it.
 
 ![](/images/car-radios-4672250_960_720.jpg)

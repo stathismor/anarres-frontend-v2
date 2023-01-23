@@ -13,8 +13,8 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="flex items-center flex-wrap bg-gray-700 p-3 ">
-        <Link href="/" className="inline-flex items-center p-2 mr-4 ">
+      <nav className="flex items-center flex-wrap bg-gray-700 p-3">
+        <Link href="/" className="inline-flex items-center p-2 mr-4">
           <Image src="/images/logo.png" alt="" width="150" height="25" />
         </Link>
         <button
