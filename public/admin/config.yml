@@ -15,7 +15,7 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Subtitle", name: "subtitle", widget: "string" }
-      - { label: "Weekday", name: "weekday", widget: "string" }
+      - { label: "Weekday", name: "weekday", widget: "select", options: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] }
       - { label: "Starts", name: "startTime", widget: "string" }
       - { label: "Ends", name: "endTime", widget: "string" }
       - { label: "Live", name: "isLive", widget: "boolean", default: false }

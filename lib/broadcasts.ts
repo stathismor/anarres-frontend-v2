@@ -4,10 +4,12 @@ import matter from "gray-matter";
 
 const BROADCAST_DATA_FOLDER = "schedule/broadcasts";
 
+export type Weekday = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
+
 interface MatterData {
   title: string;
   subtitle: string;
-  weekday: string;
+  weekday: Weekday;
   startTime: string;
   endTime: string;
   isLive: boolean;
@@ -57,3 +59,15 @@ function getMatterData(broadcastPath: string) {
     ...data,
   };
 }
+
+export const groupByDay = (broadcasts: Array<BroadcastData>) => {
+  return broadcasts.reduce((acc, broadcast) => {
+    const  { weekday } = broadcast;
+    // @ts-ignore
+    const day = acc[weekday] || [];
+    return {
+      ...acc,
+      [weekday]: [broadcast, ...day],
+    };
+  }, {});
+};
