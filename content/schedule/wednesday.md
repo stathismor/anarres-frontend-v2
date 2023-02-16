@@ -1,5 +1,0 @@
----
-title: Wednesday
----
-
-Wednesdays schedule

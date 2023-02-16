@@ -1,5 +1,0 @@
----
-title: Tuesday
----
-
-Tuesdays schedule

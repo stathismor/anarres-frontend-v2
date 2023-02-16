@@ -9,11 +9,16 @@ public_folder: "/images" # The src attribute for uploaded media will begin with 
 collections:
   - name: "broadcasts"
     label: "Schedule"
-    folder: "content/schedule"
-    create: false
+    folder: "schedule/broadcasts"
+    create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Weekday", name: "title", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Weekday", name: "weekday", widget: "string" }
+      - { label: "Starts", name: "startTime", widget: "string" }
+      - { label: "Ends", name: "endTime", widget: "string" }
+      - { label: "Live", name: "isLive", widget: "boolean", default: false }
       - { label: "Body", name: "body", widget: "markdown" }
   - name: "posts" # Used in routes, e.g., /admin/collections/blog
     label: "Blog posts" # Used in the UI
