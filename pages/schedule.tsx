@@ -39,7 +39,7 @@ export default function Home({ broadcasts }: { broadcasts: Array<BroadcastData> 
                 </div>
                 <div  className="broadcast-title">
                   <Link
-                    href={`/schedule/${broadcast.slug}`}
+                    href={`/programmes/${broadcast.slug}`}
                     className="no-underline text-2xl font-bold"
                   >
                     {broadcast.title}

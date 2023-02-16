@@ -7,4 +7,4 @@ endTime: "00:00"
 isLive: true
 ---
 
-Here's an example of a description of the specific radio broadcast
+Καλησπέρα φατσούλες...
