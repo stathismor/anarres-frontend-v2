@@ -75,7 +75,12 @@ export default function Schedule({ days }:
               onClick={() => setDay(day)}>{`${day} `}
             </button>)}
         </div>
-        <DaysProgramme broadcasts={days[selectedDay]} />
+        <DaysProgramme
+          broadcasts={
+            // @ts-ignore
+            days[selectedDay]
+          }
+        />
       </section>
     </EnterTransition>
   );
