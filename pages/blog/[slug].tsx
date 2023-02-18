@@ -4,7 +4,6 @@ import { NextPage } from "next";
 import Image, { ImageProps } from "next/image";
 import ReactMarkdown from "react-markdown";
 import { getPostData, PostData, getPostSlugs } from "../../lib/posts";
-import "github-markdown-css";
 import {
   childVariants,
   EnterTransition,
