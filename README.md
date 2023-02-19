@@ -24,6 +24,15 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 * Preferred package manager: `npm`
 
+### Admin Panel
+
+The Admin Panel, powered by Netlify CMS, where new and existing content can be edited,
+can worked locally with the corresponding npm task 
+
+```bash
+npm run admin
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

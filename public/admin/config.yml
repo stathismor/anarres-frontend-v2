@@ -2,6 +2,9 @@ backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
 
+# when using the default proxy server port
+local_backend: true
+
 # These lines should *not* be indented
 media_folder: "public/images/" # Media files will be stored in the repo under static/images/uploads
 public_folder: "/images" # The src attribute for uploaded media will begin with /images/uploads
