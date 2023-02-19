@@ -7,6 +7,19 @@ media_folder: "public/images/" # Media files will be stored in the repo under st
 public_folder: "/images" # The src attribute for uploaded media will begin with /images/uploads
 
 collections:
+  - name: "broadcasts"
+    label: "Schedule"
+    folder: "schedule/broadcasts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Weekday", name: "weekday", widget: "select", options: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] }
+      - { label: "Starts", name: "startTime", widget: "string" }
+      - { label: "Ends", name: "endTime", widget: "string" }
+      - { label: "Live", name: "isLive", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }
   - name: "posts" # Used in routes, e.g., /admin/collections/blog
     label: "Blog posts" # Used in the UI
     folder: "blog/posts" # The path to the folder where the documents are stored
