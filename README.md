@@ -27,7 +27,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ### Admin Panel
 
 The Admin Panel, powered by Netlify CMS, where new and existing content can be edited,
-can worked locally with the corresponding npm task 
+can work locally with the corresponding npm task.
 
 ```bash
 npm run admin
