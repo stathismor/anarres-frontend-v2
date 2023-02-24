@@ -6,7 +6,7 @@
   "display": "minimal-ui",
   "orientation": "portrait",
   "scope": "/",
-  "start_url": "https://anarres.fm/",
+  "start_url": "/",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
