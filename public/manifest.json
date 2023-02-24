@@ -3,7 +3,7 @@
   "short_name": "anarres",
   "theme_color": "#3350A1",
   "background_color": "#000",
-  "display": "minimal-ui",
+  "display": "fullscreen",
   "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
