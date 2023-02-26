@@ -33,6 +33,18 @@ can work locally with the corresponding npm task.
 npm run admin
 ```
 
+### PWA
+
+The webpage has been configured as a [PWA](https://web.dev/what-are-pwas/),
+to benefit from the advantages of PWA applications on the web
+and give a more native feeling on mobile OSes.
+
+### Icons
+
+The icons (`public/images/icons/`) have been generated from <https://www.pwabuilder.com/imageGenerator> with `#212529` as a background color
+and the default padding (`0.3`).
+
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
